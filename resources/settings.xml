@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="General">
+		<setting label="Download Location" type="folder" id="download_path" source="auto" option="writeable" default="/"/>
+		<setting label="Items Per Page" type="number" id="items_per_page" default="10"/>
+		<setting label="Main URL" type="text" id="main_url" default="https://moviemad.one" visible="false"/>
+		<setting label="xbet" type="text" id="xbetmovies" default="https://1xbetmovies.in" visible="false"/>
+	</category>
+	<category label="API">
+		<setting label="TMDB API Key" type="text" id="api_key"/>
+	</category>
+</settings>
