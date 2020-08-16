@@ -7,8 +7,13 @@ def get(url):
     sess = requests.Session()
     r = sess.get(url)
     soup = BeautifulSoup(r.content,'html.parser')
-    l = [d for d in soup.select("script")]
-    link = ''.join(re.split(',', (re.split('"',(re.split('{', str(l[22]))[2]))[1])))
-    return(link.replace('.urlset','/.urlset'))
+    l = [d.get_text() for d in soup.select("script")][21]
+    m = re.split("\|", l)
+    if m[len(m)-10] == "urlset":
+        return("https://{}.{}.to/{}/{}/urlset/master.m3u8".format(m[len(m)-6], m[len(m)-7], m[len(m)-8], m[len(m)-9]))
+    else:
+        return("https://{}.{}.to/{}/{}{}{}/urlset/master.m3u8".format(m[len(m)-6], m[len(m)-7], m[len(m)-8], m[len(m)-9], m[len(m)-10], m[len(m)-11]))
 
-print(get('https://vup.to/gr9plmd6i4ji.html'))
+#print(get('https://vup.to/gr9plmd6i4ji.html'))
+#print(get('https://vup.to/3ec5db98pa4n.html'))
+
