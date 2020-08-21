@@ -7,7 +7,7 @@ def get(url):
     sess = requests.Session()
     r = sess.get(url)
     soup = BeautifulSoup(r.content,'html.parser')
-    l = [d.get_text() for d in soup.select("script")][21]
+    l = [d.get_text() for d in soup.select("script")][20]
     m = re.split("\|", l)
     if m[len(m)-10] == "urlset":
         return("https://{}.{}.to/{}/{}/urlset/master.m3u8".format(m[len(m)-6], m[len(m)-7], m[len(m)-8], m[len(m)-9]))
